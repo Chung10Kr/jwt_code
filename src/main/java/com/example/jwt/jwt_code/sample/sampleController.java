@@ -22,8 +22,12 @@ public class sampleController {
     param.put("userNm" , userNm );
     String token = jwtTokenUtil.generateTokenForUser(param); //make Token
     return token;
+    
   };
 
+  /*
+    프론트는 return 받은 token 값을 header의 Authorization 담아 요청
+  */
   @RequestMapping(value = "/jwt/set/token")
   public String getUserId(@RequestHeader String Authorization) throws Exception {
     String userId = jwtTokenUtil.getUserIdFromToken(Authorization);
